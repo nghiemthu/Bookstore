@@ -18,6 +18,21 @@ import fi.haagahelia.course.domain.BookRepository;
 @DataJpaTest
 public class BookRepositoryTest {
 
-    
+	@Autowired
+    private BookRepository repository;
 
+    @Test
+    public void findByTitleShouldReturnBook() {
+        List<Book> books = repository.findByTitle("Hit");
+        
+        assertThat(books).hasSize(1);
+        assertThat(books.get(0).getTitle()).isEqualTo("H");
+    }
+    
+    @Test
+    public void createBook() {
+    	Book book = new Book("Hitt", "Cat", 23, "hsidf23", 123, new Category("Art"));
+    	repository.save(book);
+    	assertThat(book.getId()).isNotNull();
+    } 
 }
