@@ -15,6 +15,9 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String passwordHash;
+    
+    @Column(name = "email", nullable = false)
+    private String email;
 
     @Column(name = "role", nullable = false)
     private String role;
@@ -22,11 +25,12 @@ public class User {
     public User() {
     }
 
-	public User(String username, String passwordHash, String role) {
+	public User(String username, String passwordHash,String email, String role) {
 		super();
 		this.username = username;
 		this.passwordHash = passwordHash;
 		this.role = role;
+		this.email = email;
 	}
 
 	public Long getId() {
@@ -53,6 +57,14 @@ public class User {
 		this.passwordHash = passwordHash;
 	}
 
+	public String getEmail() {
+		return role;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String getRole() {
 		return role;
 	}
